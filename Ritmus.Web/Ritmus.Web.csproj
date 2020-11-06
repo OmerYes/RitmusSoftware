@@ -88,11 +88,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\images\cart\one.png" />
+    <Content Include="Content\images\cart\three.png" />
+    <Content Include="Content\images\cart\two.png" />
+    <Content Include="Content\images\home\gallery1.jpg" />
+    <Content Include="Content\images\home\gallery2.jpg" />
+    <Content Include="Content\images\home\gallery3.jpg" />
+    <Content Include="Content\images\home\gallery4.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -101,6 +111,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,7 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Content\js\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
