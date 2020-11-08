@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Ritmus.Data.Entity
+namespace Ritmus.Web.Models.VM
 {
-   public class Product:BaseEntity
+    public class ProductVM
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public int Stock { get; set; }
         public string ImageURL { get; set; }
-        public virtual List<Chart> Charts { get; set; }
     }
 }

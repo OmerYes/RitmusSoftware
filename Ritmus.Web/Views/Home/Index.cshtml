@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model Ritmus.Web.Models.VM.ProductChartVM 
 <!DOCTYPE html>
 
 <html>
@@ -15,142 +15,207 @@
     <link href="~/Content/css/main.css" rel="stylesheet" />
 </head>
 <body>
-    
-  
-      
-            <div class="row" style="margin-top:5%">
-                <div class="col-sm-8">
-                    <div class="left-sidebar">
-                        <div class="category-tab">
-                            <!--category-tab-->
-                            <div class="col-sm-12">
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a >T-Shirt</a></li>
-                                    
-                                </ul>
-                            </div>
-                            <div class="tab-content">
-                                <div class="tab-pane fade active in" id="tshirt">
-                                    <div class="col-sm-3">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="~/Content/images/home/gallery1.jpg" />
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="~/Content/images/home/gallery2.jpg" />
-
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="~/Content/images/home/gallery3.jpg" />
-
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="~/Content/images/home/gallery4.jpg" />
-
-                                                    <h2>$56</h2>
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                
 
 
 
-                            </div>
-                        </div><!--/category-tab-->
+    <div class="row" style="margin-top:5%">
+        <div class="col-sm-8">
+            <div class="left-sidebar">
+                <div class="category-tab">
+                    <!--category-tab-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a>Ürünler</a></li>
 
+                        </ul>
                     </div>
-                </div>
+                    <div class="tab-content">
+                     
+                            <div class="tab-pane fade active in" id="tshirt">
+                                @foreach (var item in Model.products)
+                                {
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center" id="Product-@item.ID">
+                                                    <img data-id="product-@item.ID" src="@item.ImageURL" />
+                                                    <h2 >@item.Price </h2> <h2>TL</h2>
+                                                    <p >@item.Name</p>
+                                                    @if (item.Stock == 0)
+                                                    {
+                                                        <a href="#" style="pointer-events:none" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Stokta Bulunmamakta</a>
 
-                <div class="col-sm-4 padding-right">
-                    <section id="cart_items">
-                        <div class="table-responsive cart_info">
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr class="cart_menu">
-                                        <td class="image">Item</td>
-                                        <td class="description"></td>
-                                        <td class="price">Price</td>
-                                        <td class="quantity">Quantity</td>
-                                        <td class="total">Total</td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="cart_product">
-                                            <a href="">
+                                                    }
+                                                    else
+                                                    {
+                                                        <button data-productid="@item.ID" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sepete Ekle</button>
 
-                                                <img src="~/Content/images/cart/one.png" />
-                                            </a>
-                                        </td>
-                                        <td class="cart_description">
-                                            <h4><a href="">Colorblock Scuba</a></h4>
-                                            <p>Web ID: 1089772</p>
-                                        </td>
-                                        <td class="cart_price">
-                                            <p>$59</p>
-                                        </td>
-                                        <td class="cart_quantity">
-                                            <div class="cart_quantity_button">
-                                                <button class="cart_quantity_up"> + </button>
-                                                <input class="cart_quantity_input" type="text"  name="quantity" value="1" autocomplete="off"  style="width:28px">
-                                                <button class="cart_quantity_down" > - </button>
+                                                    }
+                                                </div>
+
                                             </div>
-                                        </td>
-                                        <td class="cart_total">
-                                            <p class="cart_total_price">$59</p>
-                                        </td>
-                                        <td class="cart_delete">
-                                            <a class="cart_quantity_delete" href="javascript:void(0)"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
-                                   
+                                        </div>
+                                    </div>
+                                }
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
-                </div>
+                            </div>
+                      
+                    </div>
+                </div><!--/category-tab-->
+
             </div>
-       
-  
+        </div>
+
+        <div class="col-sm-4 padding-right">
+            <section id="cart_items">
+                <div class="table-responsive cart_info">
+                    <table class="table table-condensed" id="myTable">
+                        <thead>
+                            <tr class="cart_menu">
+                                <td class="image">Item</td>
+                                <td class="description"></td>
+                                <td class="price">Price</td>
+                                <td class="quantity">Quantity</td>
+
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody class="tbl_test">
+                            @if (Model.charts.Count != 0)
+                            {
+                                foreach (var item in Model.charts)
+                                {
+                            <tr id="Chart_tr-"@item.ID>
+                                <td class="cart_product"><img style="width:110px; height:110px" src='@item.ProductImgURL' /></td>
+                                <td class="cart_description">  <h4>@item.ProductName</h4></td>
+                                <td class="cart_price"> <p id="TotalPrc-@item.ID">@item.TotalPrice </p></td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <button data-chartid="@item.ID" class="cart_quantity_up">+</button>
+                                        <input id="inpt-@item.ID" class="cart_quantity_input" value='@item.Quantity' type="text" name="quantity" style="width:28px">
+                                        <button data-chartid="@item.ID" class="cart_quantity_down">-</button>
+                                    </div>
+                                </td>
+                                <td class="cart_delete"><a data-chartid="@item.ID" id="Trsh-@item.ID" class="cart_quantity_delete" href="javascript:void(0)"> <i class="fas fa-trash-alt"></i></a></td>
+                            </tr>
+                                }
+
+                            }
+                        </tbody>
+
+                    </table>
+                    @if (Model.ChartPrice != 0)
+                    {
+                     <h2 id="Chart_prc">TOTAL PRICE: @Model.ChartPrice TL</h2>
+                    }
+                    <h2 id="Chart_prc"></h2>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
 
 </body>
 </html>
+<script src="~/Content/js/jqurey.3.5.1.js"></script>
+<script>
+    //sepete ekleme
+    $('.add-to-cart').click(function () {
+
+        var productID = $(this).data("productid")
+
+        $.getJSON("/Home/AddToChart/" + productID, function (data) {
+            if (data.Quantity == 1) {
+                $("table tbody").append('<tr id="Chart_tr-' + data.ID + '"><td class="cart_product"><img style="width:110px; height:110px" src=' + data.ProductImgURL + ' /></td><td class="cart_description">  <h4>' + data.ProductName + '</h4></td><td class="cart_price"> <p id="TotalPrc-' + data.ID + '" >' + data.ProductPrice + '  </p></td><td class="cart_quantity"><div class="cart_quantity_button"><button data-chartid=' + data.ID + ' class="cart_quantity_up">+</button><input id="inpt-' + data.ID + '" class="cart_quantity_input" value=' + data.Quantity + ' type="text" name="quantity" style="width:28px"><button data-chartid="' + data.ID + '" class="cart_quantity_down" >-</button> </div></td><td class="cart_delete"><a data-chartid="' + data.ID + '"  id="Trsh-' + data.ID + '" class="cart_quantity_delete" href="javascript: void (0)"> <i class="fas fa-trash - alt"></i></a></td></tr>')
+
+                //toplam ücreti yazdırmak için kullandığım alan
+                let txt = 0
+                $("td.cart_price").each(function () {
+                    txt += parseFloat($(this).text());
+                  });
+                
+
+                $('#Chart_prc').text('TOTAL PRICE: ' + txt + '  TL')
+            }
+            else {
+
+                $('#inpt-' + data.ID).val('' + data.Quantity)
+
+                $('#TotalPrc-' + data.ID).html('' +data.TotalPrice)
+                //toplam ücreti yazdırmak için kullandığım alan
+                let txt = 0
+                $("td.cart_price").each(function () {
+                    txt += parseFloat($(this).text());
+                 });
+                
+                $('#Chart_prc').text('TOTAL PRICE: ' + txt + '  TL')
+
+            }
+        })
+
+    });
+
+    //miktar arttırma
+    $('table tbody').on('click', '.cart_quantity_up', function () {
+        var chartID = $(this).data("chartid")
+
+        $.getJSON("/Home/Increase/" + chartID, function (data) {
+            $('#inpt-' + data.ID).val('' + data.Quantity)
+            $('#TotalPrc-' + data.ID).html('' + data.TotalPrice)
+            //toplam ücreti yazdırmak için kullandığım alan
+            let txt = 0
+            $("td.cart_price").each(function () {
+                txt += parseFloat($(this).text());
+            });
+            $('#Chart_prc').text('TOTAL PRICE: ' + txt + '  TL')
+        })
+     })
+
+
+    //miktar azaltma
+    $('table tbody').on('click', '.cart_quantity_down', function () {
+        var chartID = $(this).data("chartid")
+
+        $.getJSON("/Home/Decrease/" + chartID, function (data) {
+            $('#inpt-' + data.ID).val('' + data.Quantity)
+            $('#TotalPrc-' + data.ID).html('' + data.TotalPrice)
+            //toplam ücreti yazdırmak için kullandığım alan
+            let txt = 0
+            $("td.cart_price").each(function () {
+                txt += parseFloat($(this).text());
+            });
+            $('#Chart_prc').text('TOTAL PRICE: ' + txt + '  TL')
+        })
+    })
+
+    //silme işlemi
+    $('table tbody').on('click', '.cart_quantity_delete', function () {
+        var chartID = $(this).data("chartid")
+
+        $.getJSON("/Home/Delete/" + chartID, function (response) {
+            
+            $("#Chart_tr-" + chartID ).fadeOut("normal", function () {
+                $(this).remove();
+                //toplam ücreti yazdırmak için kullandığım alan
+                let txt = 0
+                $("td.cart_price").each(function () {
+                    txt += parseFloat($(this).text());
+                });
+
+                if (txt == 0) {
+                    $('#Chart_prc').text('')
+                }
+                else
+                {
+                    $('#Chart_prc').text('TOTAL PRICE: ' + txt + '  TL')
+                }
+                
+                
+            });
+
+        
+        })
+    })
+
+</script>
