@@ -100,7 +100,9 @@
     <Content Include="Content\images\home\gallery1.jpg" />
     <Content Include="Content\images\home\gallery2.jpg" />
     <Content Include="Content\images\home\gallery3.jpg" />
+    <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\jqurey.3.5.1.js" />
+    <Content Include="Content\js\sweetalert.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
