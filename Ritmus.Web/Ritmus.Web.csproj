@@ -97,9 +97,6 @@
   <ItemGroup>
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\main.css" />
-    <Content Include="Content\images\cart\one.png" />
-    <Content Include="Content\images\cart\three.png" />
-    <Content Include="Content\images\cart\two.png" />
     <Content Include="Content\images\home\gallery1.jpg" />
     <Content Include="Content\images\home\gallery2.jpg" />
     <Content Include="Content\images\home\gallery3.jpg" />
